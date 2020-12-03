@@ -1,13 +1,13 @@
 #!/usr/bin/ruby
 
-list = Array.new
+list = []
 
 ARGF.each do |i|
- list << i.to_i
+  list << i.to_i
 end
 
 # Part 1
-list.uniq.combination(2).detect { |x, y| puts x * y if x + y == 2020 }
+list.combination(2).detect { |x, y| puts x * y if x + y == 2020 }
 
 # Part 2
-list.uniq.combination(3).detect { |x, y, z| puts x * y * z if x + y + z == 2020 }
+list.combination(3).detect { |x, y, z| puts x * y * z if x + y + z == 2020 }
