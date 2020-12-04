@@ -22,7 +22,7 @@ def part_two(str)
   elsif hgt_s == "in" and hgt_n >= 59 and hgt_n <= 76
     hgt = 1
   else
-    hgt = 0
+    nil
   end
 
   hcl = 1 if !str.scan(/hcl:#\w+/).empty? and str.scan(/hcl:#\w+/)[0].split(":#")[1].to_s.size == 6
@@ -36,8 +36,8 @@ def part_two(str)
   # puts "byr=#{byr} iyr=#{iyr} eyr=#{eyr} hgt=#{hgt} hcl=#{hcl} elc=#{ecl} pid=#{pid}"
 
   # final check to see all conditions match
-  if [byr, iyr, eyr, hgt, hcl, ecl, pid].all?{ |i| i == 1 }
-    "YES"
+  if [byr, iyr, eyr, hgt, hcl, ecl, pid].all? { |i| i == 1 }
+    return true
   end
 end
 
@@ -58,16 +58,10 @@ end
   keys = str.scan(/byr:|iyr:|eyr:|hgt:|hcl:|ecl:|pid:|cid:/)
   if keys.size == 8
     valid += 1
-    check_two = part_two(str)
-    if check_two == "YES"
-      valid_res += 1
-    end
+    valid_res += 1 if part_two(str)
   elsif keys.size == 7 and !keys.include?("cid:")
     valid += 1
-    check_two = part_two(str)
-    if check_two == "YES"
-      valid_res += 1
-    end
+    valid_res += 1 if part_two(str)
   else
     next
   end
