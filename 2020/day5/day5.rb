@@ -1,6 +1,7 @@
 #!/usr/bin/ruby
 
 highest = 0
+seats = []
 
 def halfify(arr, ltr)
   if ltr == "F" or ltr == "L"
@@ -28,9 +29,14 @@ ARGF.each_line do |str|
   cou = carr[0]
 
   sid = row * 8 + cou
+  seats << sid
   if sid >= highest
     highest = sid
   end
 end
 
+seats.sort!
+order = (seats[0]..seats[-1]).to_a
+
 puts highest
+p order - seats
