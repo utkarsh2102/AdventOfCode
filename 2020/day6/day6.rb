@@ -17,16 +17,13 @@ ARGF.each_line do |str|
     count += arr.size
     arr = []
   else
-    for i in str.chomp.split("")
-      if !arr.include?(i)
-        arr << i
-      end
+    str.chomp.split('').each do |i|
+      arr << i unless arr.include?(i)
     end
   end
 end
 
 puts count + arr.size
-
 
 # Part 2
 p groups.sum { |group| group.split.map(&:chars).reduce(&:&).length }
