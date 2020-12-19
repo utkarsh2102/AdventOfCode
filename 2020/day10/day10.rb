@@ -18,3 +18,15 @@ j1 = j3 = 0
 end
 
 p "Part 1: #{j1 * j3}"
+
+# Part 2
+pos = Hash.new(0)
+pos[0] = 1
+
+arr.each do |i|
+  3.times do |j|
+    pos[i] += pos[i-j-1]
+  end
+end
+
+p "Part 2: #{pos.values.max}"
