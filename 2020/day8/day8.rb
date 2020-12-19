@@ -3,8 +3,7 @@
 arr = File.read('input')
              .split("\n")
 
-acc = 0
-i = 0
+acc = i = 0
 visited = []
 
 loop do
@@ -20,18 +19,12 @@ loop do
       val = arr[i].chomp.split(op)[1].to_i
 
       if ins == "acc"
-        if op == "+"
-          acc += val
-        else
-          acc -= val
-        end
+        acc += val if op == "+"
+        acc -= val if op == "-"
         i += 1
       else
-        if op == "+"
-          i += val
-        else
-          i -= val
-        end
+        i += val if op == "+"
+        i -= val if op == "-"
       end
     end
   end
